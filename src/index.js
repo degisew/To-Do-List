@@ -5,7 +5,6 @@ import enter from './assets/enter.png';
 const tasksContainer = document.getElementById('tasks');
 const rotateArrow = document.getElementById('rotate-arrow');
 const enterIcon = document.getElementById('enter-icon');
-// const titleDiv = document.querySelector('.title');
 rotateArrow.src = Img;
 enterIcon.src = enter;
 
@@ -27,7 +26,6 @@ const tasks = [
   },
 ];
 
-//  <div class="each-list-container"></div>
 tasks.forEach((task) => {
   tasksContainer.innerHTML += `
  

@@ -53,16 +53,12 @@ ul li {
   padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid rgb(214, 212, 212);
-
-  /* font-size: 15px; */
   font-weight: normal;
   column-gap: 10px;
 }
 
 .tasks {
   display: block;
-
-  /* background-color: green; */
 }
 
 .each-list-container {
@@ -79,21 +75,11 @@ ul li {
 .each-task-btn {
   border: none;
   width: 20px;
-
-  /* outline: none; */
-
-  /* font-size: 20px; */
-
-  /* font-weight: bolder; */
   background-color: inherit;
   background-image: url(./assets/dotsLoading.png);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
-
-  /* width:fit-content; */
-
-  /* height: fit-content; */
 }
 
 #clear {
@@ -101,8 +87,6 @@ ul li {
   width: 100%;
   justify-content: center;
   align-items: center;
-
-  /* margin-top: 20px; */
   border: none;
   outline: none;
   height: 40px;
