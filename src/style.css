@@ -31,10 +31,15 @@ h3 {
 input[type="text"] {
   display: flex;
   width: 100%;
-  font-style: italic;
+  padding-top: 10px;
+  padding-bottom: 10px;
   font-size: 15px;
   border: none;
   outline: none;
+}
+
+input::placeholder {
+  font-style: italic;
 }
 
 #form {
@@ -50,8 +55,6 @@ ul {
 ul li {
   display: flex;
   width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
   border-bottom: 1px solid rgb(214, 212, 212);
   font-weight: normal;
   column-gap: 10px;
@@ -59,12 +62,6 @@ ul li {
 
 .tasks {
   display: block;
-}
-
-.each-list-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .checkbox {
@@ -77,6 +74,17 @@ ul li {
   width: 20px;
   background-color: inherit;
   background-image: url(./assets/dotsLoading.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.trash {
+  display: none;
+  border: none;
+  width: 20px;
+  background-color: inherit;
+  background-image: url(./assets/trash.png);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
