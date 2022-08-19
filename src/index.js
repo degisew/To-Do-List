@@ -1,11 +1,12 @@
-import "./style.css";
-import Img from "./assets/rotateArrow.png";
-import enter from "./assets/enter.png";
-import Tasks from "./modules/addTask";
-const tasksContainer = document.getElementById("tasks");
-const rotateArrow = document.getElementById("rotate-arrow");
-const enterIcon = document.getElementById("enter-icon");
-const form = document.getElementById("form");
+import './style.css';
+import Img from './assets/rotateArrow.png';
+import enter from './assets/enter.png';
+import Tasks from './modules/addTask.js';
+
+const tasksContainer = document.getElementById('tasks');
+const rotateArrow = document.getElementById('rotate-arrow');
+const enterIcon = document.getElementById('enter-icon');
+const form = document.getElementById('form');
 
 rotateArrow.src = Img;
 enterIcon.src = enter;
@@ -22,49 +23,48 @@ Tasks.localStorageData().forEach((task, index) => {
   </li>`;
 });
 
-//refresh Icon implementation
-document.getElementById('rotate-arrow').addEventListener('click', ()=>{
+// refresh Icon implementation
+document.getElementById('rotate-arrow').addEventListener('click', () => {
   window.location.reload();
 });
 // to implement click event and change the icon to trash.
-const allTaskLists = document.querySelectorAll(".task-list");
+const allTaskLists = document.querySelectorAll('.task-list');
 allTaskLists.forEach((taskList) => {
-  taskList.addEventListener("click", (e) => {
-    taskList.lastElementChild.previousElementSibling.style.display = "none";
-    taskList.lastElementChild.style.display = "block";
+  taskList.addEventListener('click', () => {
+    taskList.lastElementChild.previousElementSibling.style.display = 'none';
+    taskList.lastElementChild.style.display = 'block';
   });
 });
-//to change the icon when the focus is left.
+// to change the icon when the focus is left.
 allTaskLists.forEach((taskList) => {
-  taskList.addEventListener("focusout", (e) => {
-    taskList.lastElementChild.previousElementSibling.style.display = "block";
-    taskList.lastElementChild.style.display = "none";
+  taskList.addEventListener('focusout', () => {
+    taskList.lastElementChild.previousElementSibling.style.display = 'block';
+    taskList.lastElementChild.style.display = 'none';
   });
 });
 
-const allTrashBtn = document.querySelectorAll(".trash");
+const allTrashBtn = document.querySelectorAll('.trash');
 // console.log(all);
 allTrashBtn.forEach((eachTrashBtn) => {
-  eachTrashBtn.addEventListener("click", (e) => {
+  eachTrashBtn.addEventListener('click', (e) => {
     e.target.parentElement.remove();
-   // console.log(e.target.id);
     Tasks.remove(e.target.id);
   });
 });
 
-const editTask = document.querySelectorAll(".editable-input-field");
-editTask.forEach((eachInputField, fieldId)=>{
-  eachInputField.addEventListener('change',(e)=>{
+const editTask = document.querySelectorAll('.editable-input-field');
+editTask.forEach((eachInputField, fieldId) => {
+  eachInputField.addEventListener('change', (e) => {
     // const id = +e.target.id - 1;
     // console.log(typeof(id));
     Tasks.update(e.target.value, fieldId);
   });
-})
+});
 
-form.addEventListener("change", () => {
-  const taskInputField = document.getElementById("add-input");
+form.addEventListener('change', () => {
+  const taskInputField = document.getElementById('add-input');
   const descrptn = taskInputField.value;
   Tasks.add(descrptn);
   window.location.reload();
 });
-//localStorage.removeItem('alltasks');
+// localStorage.removeItem('alltasks');

@@ -55,8 +55,6 @@ ul {
 ul li {
   display: flex;
   width: 100%;
-  /* padding-top: 10px;
-  padding-bottom: 10px; */
   border-bottom: 1px solid rgb(214, 212, 212);
   font-weight: normal;
   column-gap: 10px;
