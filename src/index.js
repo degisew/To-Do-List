@@ -1,7 +1,8 @@
 import './style.css';
 import Img from './assets/rotateArrow.png';
 import enter from './assets/enter.png';
-import Tasks from './modules/addTask.js';
+import Tasks from './modules/CRUD.js';
+import { checkSelected, clearAll } from './modules/statusUpdate.js';
 
 const tasksContainer = document.getElementById('tasks');
 const rotateArrow = document.getElementById('rotate-arrow');
@@ -55,6 +56,25 @@ editTask.forEach((eachInputField, fieldId) => {
   eachInputField.addEventListener('change', (e) => {
     Tasks.update(e.target.value, fieldId);
   });
+});
+
+const checkbox = document.querySelectorAll('.checkbox');
+checkbox.forEach((eachCheckBox, index) => {
+  eachCheckBox.addEventListener('change', () => {
+    const returnedInputField = document.querySelectorAll('.editable-input-field')[index];
+    if (eachCheckBox.checked) {
+      returnedInputField.style.textDecoration = 'line-through';
+      checkSelected(index);
+    } else {
+      returnedInputField.style.textDecoration = 'none';
+      checkSelected(index);
+    }
+  });
+});
+
+const clearAllBtn = document.getElementById('clear');
+clearAllBtn.addEventListener('click', () => {
+  clearAll();
 });
 
 form.addEventListener('change', () => {
