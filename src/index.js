@@ -11,7 +11,6 @@ const form = document.getElementById('form');
 rotateArrow.src = Img;
 enterIcon.src = enter;
 
-// function display(){
 Tasks.localStorageData().forEach((task, index) => {
   tasksContainer.innerHTML += `
  
@@ -44,7 +43,6 @@ allTaskLists.forEach((taskList) => {
 });
 
 const allTrashBtn = document.querySelectorAll('.trash');
-// console.log(all);
 allTrashBtn.forEach((eachTrashBtn) => {
   eachTrashBtn.addEventListener('click', (e) => {
     e.target.parentElement.remove();
@@ -55,8 +53,6 @@ allTrashBtn.forEach((eachTrashBtn) => {
 const editTask = document.querySelectorAll('.editable-input-field');
 editTask.forEach((eachInputField, fieldId) => {
   eachInputField.addEventListener('change', (e) => {
-    // const id = +e.target.id - 1;
-    // console.log(typeof(id));
     Tasks.update(e.target.value, fieldId);
   });
 });
@@ -67,4 +63,3 @@ form.addEventListener('change', () => {
   Tasks.add(descrptn);
   window.location.reload();
 });
-// localStorage.removeItem('alltasks');
