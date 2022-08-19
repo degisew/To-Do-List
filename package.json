@@ -4,6 +4,7 @@
   "description": "A to do list app builds with webpack bundler that helps to organize your day. It simply lists the things that you need to do and allows you to mark them as complete and remove the selected item.",
   "main": "index.js",
   "scripts": {
+    "start": "webpack serve --open",
     "build": "webpack",
     "dev": "webpack server"
   },
