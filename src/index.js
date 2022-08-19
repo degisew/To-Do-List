@@ -1,36 +1,70 @@
-import './style.css';
-import Img from './assets/rotateArrow.png';
-import enter from './assets/enter.png';
+import "./style.css";
+import Img from "./assets/rotateArrow.png";
+import enter from "./assets/enter.png";
+import Tasks from "./modules/addTask";
+const tasksContainer = document.getElementById("tasks");
+const rotateArrow = document.getElementById("rotate-arrow");
+const enterIcon = document.getElementById("enter-icon");
+const form = document.getElementById("form");
 
-const tasksContainer = document.getElementById('tasks');
-const rotateArrow = document.getElementById('rotate-arrow');
-const enterIcon = document.getElementById('enter-icon');
 rotateArrow.src = Img;
 enterIcon.src = enter;
 
-const tasks = [
-  {
-    description: 'went to market',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'finish my project',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'washing clothes',
-    completed: false,
-    index: 2,
-  },
-];
-
-tasks.forEach((task) => {
+// function display(){
+Tasks.localStorageData().forEach((task, index) => {
   tasksContainer.innerHTML += `
  
-  <li><input type="checkbox" class="checkbox">
-  <input type="text" value="${task.description}">
+  <li class="task-list">
+  <input type="checkbox" class="checkbox">
+  <input type="text" id="${index + 1}" class="editable-input-field" value="${task.description}">
   <button type="button" class="each-task-btn"></button>
+  <button type="button" id="${index + 1}" class="trash"></button>
   </li>`;
 });
+
+//refresh Icon implementation
+document.getElementById('rotate-arrow').addEventListener('click', ()=>{
+  window.location.reload();
+});
+// to implement click event and change the icon to trash.
+const allTaskLists = document.querySelectorAll(".task-list");
+allTaskLists.forEach((taskList) => {
+  taskList.addEventListener("click", (e) => {
+    taskList.lastElementChild.previousElementSibling.style.display = "none";
+    taskList.lastElementChild.style.display = "block";
+  });
+});
+//to change the icon when the focus is left.
+allTaskLists.forEach((taskList) => {
+  taskList.addEventListener("focusout", (e) => {
+    taskList.lastElementChild.previousElementSibling.style.display = "block";
+    taskList.lastElementChild.style.display = "none";
+  });
+});
+
+const allTrashBtn = document.querySelectorAll(".trash");
+// console.log(all);
+allTrashBtn.forEach((eachTrashBtn) => {
+  eachTrashBtn.addEventListener("click", (e) => {
+    e.target.parentElement.remove();
+   // console.log(e.target.id);
+    Tasks.remove(e.target.id);
+  });
+});
+
+const editTask = document.querySelectorAll(".editable-input-field");
+editTask.forEach((eachInputField, fieldId)=>{
+  eachInputField.addEventListener('change',(e)=>{
+    // const id = +e.target.id - 1;
+    // console.log(typeof(id));
+    Tasks.update(e.target.value, fieldId);
+  });
+})
+
+form.addEventListener("change", () => {
+  const taskInputField = document.getElementById("add-input");
+  const descrptn = taskInputField.value;
+  Tasks.add(descrptn);
+  window.location.reload();
+});
+//localStorage.removeItem('alltasks');
