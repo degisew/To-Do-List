@@ -19,7 +19,7 @@ Run the command below from the Terminal:
 
 ## Live Demo
 
-https://degisew.github.io/To-Do-List/dist/
+[Online Demo](https://degisew.github.io/To-Do-List/dist/)
       
 ## Authors
 
